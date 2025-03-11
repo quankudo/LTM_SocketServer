@@ -1,0 +1,3 @@
+com\kudo\socketserver\WebSocketClient.class
+com\kudo\socketserver\SocketServer.class
+com\kudo\socketserver\WebSocketServer.class
