@@ -6,7 +6,9 @@ package com.kudo.socketserver;
 
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import org.glassfish.tyrus.server.Server;
 
 /**
@@ -16,7 +18,10 @@ import org.glassfish.tyrus.server.Server;
 public class SocketServer {
 
     public static void main(String[] args) {
-        Server server = new Server("localhost", 8080, "/", null, WebSocketServer.class);
+        Set<Class<?>> endpoints = new HashSet<>();
+        endpoints.add(CaculateEndpoint.class);
+//        endpoints.add(NotificationEndpoint.class);
+        Server server = new Server("localhost", 8080, "/", null, endpoints);
         try {
             System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.name()));
         } catch (Exception e) {

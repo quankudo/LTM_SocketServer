@@ -1,3 +1,9 @@
 com\kudo\socketserver\WebSocketClient.class
+com\kudo\socketserver\ChatEndpoint.class
+com\kudo\socketserver\enums\OperationMethod.class
 com\kudo\socketserver\SocketServer.class
+com\kudo\socketserver\CaculateEndpoint.class
+com\kudo\socketserver\domain\CaculateRequest.class
+com\kudo\socketserver\NotificationEndpoint.class
+com\kudo\socketserver\CaculateEndpoint$1.class
 com\kudo\socketserver\WebSocketServer.class

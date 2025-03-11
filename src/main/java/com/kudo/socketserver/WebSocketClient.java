@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.kudo.socketserver;
+import com.google.gson.Gson;
+import com.kudo.socketserver.domain.CaculateRequest;
+import com.kudo.socketserver.enums.OperationMethod;
 import jakarta.websocket.*;
 
 import java.io.IOException;
@@ -12,6 +15,7 @@ import java.util.Scanner;
 @ClientEndpoint
 public class WebSocketClient {
     private Session session;
+    private static Gson gson = new Gson();
 
     public WebSocketClient(String serverUri) {
         try {
@@ -27,7 +31,9 @@ public class WebSocketClient {
         this.session = session;
         System.out.println("Connected to server.");
         try {
-            session.getBasicRemote().sendText("Hello from client");
+            CaculateRequest rq = new CaculateRequest(4, 5, OperationMethod.CONG);
+                    
+            session.getBasicRemote().sendText(gson.toJson(rq));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,7 +50,7 @@ public class WebSocketClient {
     }
 
     public static void main(String[] args) {
-        new WebSocketClient("ws://localhost:8080/ws");
+        new WebSocketClient("ws://localhost:8080/caculate");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
